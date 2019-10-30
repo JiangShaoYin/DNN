@@ -1,0 +1,16 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+F:/DNN/dnn.h
+
+F:/DNN/main.c
+dnn.h
+F:/DNN/dnn.h
+stdio.h
+-
+

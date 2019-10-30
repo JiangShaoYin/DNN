@@ -6,19 +6,12 @@
 #define HELLO_JELLY_DNN_H
 
 
-typedef struct Channel{
-    float a;
-}Channel;
 
 
+float**** malloc_multi_array(int width, int height, int channels, int filter_nums);  // 分配卷积层内存
+int loadParameters(char* path, float**** parameters, int width, int height, int channels, int filter_nums); // 加载模型参数到卷积层
+int free_multi_array(float**** p, int width, int height, int channels, int filter_nums); // 释放卷积层
+void print_multi_array(float ****p, int width, int height, int channels, int filter_nums);// 打印卷积层
 
-typedef struct Conv{
-    int a;
-};
-
-
-int Conv(float input);
-int loadParameters(char* path, float* parameters, int height, int width, int channles, int filter_nums);
-float**** malloc_multi_array(int width, int height, int channels, int filter_nums)
 
 #endif //HELLO_JELLY_DNN_H

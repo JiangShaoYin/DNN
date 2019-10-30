@@ -11,7 +11,16 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="94d0c91f-d6ea-4ee2-959e-b5ad8f79132e" name="Default Changelist" comment="" />
+    <list default="true" id="94d0c91f-d6ea-4ee2-959e-b5ad8f79132e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/1.c" beforeDir="false" afterPath="$PROJECT_DIR$/1.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/DNN.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/DNN.dir/depend.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/DNN.exe" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/DNN.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dnn.c" beforeDir="false" afterPath="$PROJECT_DIR$/dnn.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dnn.h" beforeDir="false" afterPath="$PROJECT_DIR$/dnn.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,9 +31,14 @@
     <option name="formatViaClangd" value="false" />
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="OCFindUsagesOptions" text="true" ivars="false" properties="true" derivedClasses="false" />
   <component name="ProjectId" id="1Su9VjktcOWU8ClTCs4yAZ3FaAp" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/CMakeLists.txt" />
     <property name="restartRequiresConfirmation" value="false" />
@@ -59,36 +73,53 @@
       <option name="presentableId" value="Default" />
       <updated>1572402638892</updated>
       <workItem from="1572402641402" duration="17708000" />
+      <workItem from="1572427339478" duration="4208000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/main.c</url>
-          <line>18</line>
-          <option name="timeStamp" value="8" />
+          <url>file://$PROJECT_DIR$/dnn.c</url>
+          <line>59</line>
+          <option name="timeStamp" value="16" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/dnn.c</url>
-          <line>46</line>
-          <option name="timeStamp" value="15" />
+          <line>50</line>
+          <option name="timeStamp" value="17" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/dnn.c</url>
+          <line>38</line>
+          <option name="timeStamp" value="20" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/main.c</url>
+          <line>15</line>
+          <option name="timeStamp" value="26" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <watches-manager>
       <configuration name="CMakeRunConfiguration">
-        <watch expression="p" />
-        <watch expression="array" />
-        <watch expression="p" />
-        <watch expression="sizeof(p)" />
-        <watch expression="p[0][0][2][0]" language="ObjectiveC" />
-        <watch expression="p[i][j][k][l] " />
-        <watch expression="p[i][j][k]" language="ObjectiveC" />
+        <watch expression="atof(parameter)" />
+        <watch expression="parameter" />
       </configuration>
     </watches-manager>
   </component>
