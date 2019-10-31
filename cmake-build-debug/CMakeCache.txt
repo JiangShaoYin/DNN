@@ -17,6 +17,10 @@
 //Path to a program.
 CMAKE_AR:FILEPATH=D:/mingw64/bin/ar.exe
 
+//For backwards compatibility, what version of CMake commands and
+// syntax should this version of CMake try to support.
+CMAKE_BACKWARDS_COMPATIBILITY:STRING=2.4
+
 //Choose the type of build, options are: None Debug Release RelWithDebInfo
 // MinSizeRel ...
 CMAKE_BUILD_TYPE:STRING=Debug
@@ -243,6 +247,12 @@ DNN_BINARY_DIR:STATIC=F:/DNN/cmake-build-debug
 
 //Value Computed by CMake
 DNN_SOURCE_DIR:STATIC=F:/DNN
+
+//Single output directory for building all executables.
+EXECUTABLE_OUTPUT_PATH:PATH=
+
+//Single output directory for building all libraries.
+LIBRARY_OUTPUT_PATH:PATH=
 
 
 ########################

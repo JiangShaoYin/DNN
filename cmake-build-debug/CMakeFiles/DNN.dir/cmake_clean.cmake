@@ -1,7 +1,7 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/DNN.dir/1.c.obj"
-  "CMakeFiles/DNN.dir/dnn.c.obj"
-  "CMakeFiles/DNN.dir/main.c.obj"
+  "CMakeFiles/DNN.dir/1.obj"
+  "CMakeFiles/DNN.dir/dnn.obj"
+  "CMakeFiles/DNN.dir/main.obj"
   "DNN.exe"
   "DNN.exe.manifest"
   "DNN.pdb"

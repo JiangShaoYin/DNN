@@ -19,7 +19,7 @@
 			</Target>
 			<Target title="DNN">
 				<Option output="F:/DNN/cmake-build-debug/DNN.exe" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="F:/DNN/cmake-build-debug"/>
+				<Option working_dir=""/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -40,7 +40,7 @@
 			</Target>
 			<Target title="DNN/fast">
 				<Option output="F:/DNN/cmake-build-debug/DNN.exe" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="F:/DNN/cmake-build-debug"/>
+				<Option working_dir=""/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -86,7 +86,13 @@
 		<Unit filename="F:/DNN/dnn.c">
 			<Option target="DNN"/>
 		</Unit>
-		<Unit filename="F:/DNN/dnn.h">
+		<Unit filename="F:/DNN/include/dnn.h">
+			<Option target="DNN"/>
+		</Unit>
+		<Unit filename="F:/DNN/lib/jiang.h">
+			<Option target="DNN"/>
+		</Unit>
+		<Unit filename="F:/DNN/lib/stb_image.h">
 			<Option target="DNN"/>
 		</Unit>
 		<Unit filename="F:/DNN/main.c">

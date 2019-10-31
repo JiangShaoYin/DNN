@@ -122,86 +122,50 @@ DNN/fast:
 	$(MAKE) -f CMakeFiles\DNN.dir\build.make CMakeFiles/DNN.dir/build
 .PHONY : DNN/fast
 
-1.obj: 1.c.obj
-
+# target to build an object file
+1.obj:
+	$(MAKE) -f CMakeFiles\DNN.dir\build.make CMakeFiles/DNN.dir/1.obj
 .PHONY : 1.obj
 
-# target to build an object file
-1.c.obj:
-	$(MAKE) -f CMakeFiles\DNN.dir\build.make CMakeFiles/DNN.dir/1.c.obj
-.PHONY : 1.c.obj
-
-1.i: 1.c.i
-
+# target to preprocess a source file
+1.i:
+	$(MAKE) -f CMakeFiles\DNN.dir\build.make CMakeFiles/DNN.dir/1.i
 .PHONY : 1.i
 
-# target to preprocess a source file
-1.c.i:
-	$(MAKE) -f CMakeFiles\DNN.dir\build.make CMakeFiles/DNN.dir/1.c.i
-.PHONY : 1.c.i
-
-1.s: 1.c.s
-
+# target to generate assembly for a file
+1.s:
+	$(MAKE) -f CMakeFiles\DNN.dir\build.make CMakeFiles/DNN.dir/1.s
 .PHONY : 1.s
 
-# target to generate assembly for a file
-1.c.s:
-	$(MAKE) -f CMakeFiles\DNN.dir\build.make CMakeFiles/DNN.dir/1.c.s
-.PHONY : 1.c.s
-
-dnn.obj: dnn.c.obj
-
+# target to build an object file
+dnn.obj:
+	$(MAKE) -f CMakeFiles\DNN.dir\build.make CMakeFiles/DNN.dir/dnn.obj
 .PHONY : dnn.obj
 
-# target to build an object file
-dnn.c.obj:
-	$(MAKE) -f CMakeFiles\DNN.dir\build.make CMakeFiles/DNN.dir/dnn.c.obj
-.PHONY : dnn.c.obj
-
-dnn.i: dnn.c.i
-
+# target to preprocess a source file
+dnn.i:
+	$(MAKE) -f CMakeFiles\DNN.dir\build.make CMakeFiles/DNN.dir/dnn.i
 .PHONY : dnn.i
 
-# target to preprocess a source file
-dnn.c.i:
-	$(MAKE) -f CMakeFiles\DNN.dir\build.make CMakeFiles/DNN.dir/dnn.c.i
-.PHONY : dnn.c.i
-
-dnn.s: dnn.c.s
-
+# target to generate assembly for a file
+dnn.s:
+	$(MAKE) -f CMakeFiles\DNN.dir\build.make CMakeFiles/DNN.dir/dnn.s
 .PHONY : dnn.s
 
-# target to generate assembly for a file
-dnn.c.s:
-	$(MAKE) -f CMakeFiles\DNN.dir\build.make CMakeFiles/DNN.dir/dnn.c.s
-.PHONY : dnn.c.s
-
-main.obj: main.c.obj
-
+# target to build an object file
+main.obj:
+	$(MAKE) -f CMakeFiles\DNN.dir\build.make CMakeFiles/DNN.dir/main.obj
 .PHONY : main.obj
 
-# target to build an object file
-main.c.obj:
-	$(MAKE) -f CMakeFiles\DNN.dir\build.make CMakeFiles/DNN.dir/main.c.obj
-.PHONY : main.c.obj
-
-main.i: main.c.i
-
+# target to preprocess a source file
+main.i:
+	$(MAKE) -f CMakeFiles\DNN.dir\build.make CMakeFiles/DNN.dir/main.i
 .PHONY : main.i
 
-# target to preprocess a source file
-main.c.i:
-	$(MAKE) -f CMakeFiles\DNN.dir\build.make CMakeFiles/DNN.dir/main.c.i
-.PHONY : main.c.i
-
-main.s: main.c.s
-
-.PHONY : main.s
-
 # target to generate assembly for a file
-main.c.s:
-	$(MAKE) -f CMakeFiles\DNN.dir\build.make CMakeFiles/DNN.dir/main.c.s
-.PHONY : main.c.s
+main.s:
+	$(MAKE) -f CMakeFiles\DNN.dir\build.make CMakeFiles/DNN.dir/main.s
+.PHONY : main.s
 
 # Help Target
 help:

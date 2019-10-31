@@ -4,9 +4,9 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "F:/DNN/1.c" "F:/DNN/cmake-build-debug/CMakeFiles/DNN.dir/1.c.obj"
-  "F:/DNN/dnn.c" "F:/DNN/cmake-build-debug/CMakeFiles/DNN.dir/dnn.c.obj"
-  "F:/DNN/main.c" "F:/DNN/cmake-build-debug/CMakeFiles/DNN.dir/main.c.obj"
+  "F:/DNN/1.c" "F:/DNN/cmake-build-debug/CMakeFiles/DNN.dir/1.obj"
+  "F:/DNN/dnn.c" "F:/DNN/cmake-build-debug/CMakeFiles/DNN.dir/dnn.obj"
+  "F:/DNN/main.c" "F:/DNN/cmake-build-debug/CMakeFiles/DNN.dir/main.obj"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 
