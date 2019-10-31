@@ -138,21 +138,6 @@ DNN/fast:
 .PHONY : 1.s
 
 # target to build an object file
-dnn.obj:
-	$(MAKE) -f CMakeFiles\DNN.dir\build.make CMakeFiles/DNN.dir/dnn.obj
-.PHONY : dnn.obj
-
-# target to preprocess a source file
-dnn.i:
-	$(MAKE) -f CMakeFiles\DNN.dir\build.make CMakeFiles/DNN.dir/dnn.i
-.PHONY : dnn.i
-
-# target to generate assembly for a file
-dnn.s:
-	$(MAKE) -f CMakeFiles\DNN.dir\build.make CMakeFiles/DNN.dir/dnn.s
-.PHONY : dnn.s
-
-# target to build an object file
 main.obj:
 	$(MAKE) -f CMakeFiles\DNN.dir\build.make CMakeFiles/DNN.dir/main.obj
 .PHONY : main.obj
@@ -167,6 +152,51 @@ main.s:
 	$(MAKE) -f CMakeFiles\DNN.dir\build.make CMakeFiles/DNN.dir/main.s
 .PHONY : main.s
 
+# target to build an object file
+src/I_O.obj:
+	$(MAKE) -f CMakeFiles\DNN.dir\build.make CMakeFiles/DNN.dir/src/I_O.obj
+.PHONY : src/I_O.obj
+
+# target to preprocess a source file
+src/I_O.i:
+	$(MAKE) -f CMakeFiles\DNN.dir\build.make CMakeFiles/DNN.dir/src/I_O.i
+.PHONY : src/I_O.i
+
+# target to generate assembly for a file
+src/I_O.s:
+	$(MAKE) -f CMakeFiles\DNN.dir\build.make CMakeFiles/DNN.dir/src/I_O.s
+.PHONY : src/I_O.s
+
+# target to build an object file
+src/dnn.obj:
+	$(MAKE) -f CMakeFiles\DNN.dir\build.make CMakeFiles/DNN.dir/src/dnn.obj
+.PHONY : src/dnn.obj
+
+# target to preprocess a source file
+src/dnn.i:
+	$(MAKE) -f CMakeFiles\DNN.dir\build.make CMakeFiles/DNN.dir/src/dnn.i
+.PHONY : src/dnn.i
+
+# target to generate assembly for a file
+src/dnn.s:
+	$(MAKE) -f CMakeFiles\DNN.dir\build.make CMakeFiles/DNN.dir/src/dnn.s
+.PHONY : src/dnn.s
+
+# target to build an object file
+src/memory_manage.obj:
+	$(MAKE) -f CMakeFiles\DNN.dir\build.make CMakeFiles/DNN.dir/src/memory_manage.obj
+.PHONY : src/memory_manage.obj
+
+# target to preprocess a source file
+src/memory_manage.i:
+	$(MAKE) -f CMakeFiles\DNN.dir\build.make CMakeFiles/DNN.dir/src/memory_manage.i
+.PHONY : src/memory_manage.i
+
+# target to generate assembly for a file
+src/memory_manage.s:
+	$(MAKE) -f CMakeFiles\DNN.dir\build.make CMakeFiles/DNN.dir/src/memory_manage.s
+.PHONY : src/memory_manage.s
+
 # Help Target
 help:
 	@echo The following are some of the valid targets for this Makefile:
@@ -179,12 +209,18 @@ help:
 	@echo ... 1.obj
 	@echo ... 1.i
 	@echo ... 1.s
-	@echo ... dnn.obj
-	@echo ... dnn.i
-	@echo ... dnn.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s
+	@echo ... src/I_O.obj
+	@echo ... src/I_O.i
+	@echo ... src/I_O.s
+	@echo ... src/dnn.obj
+	@echo ... src/dnn.i
+	@echo ... src/dnn.s
+	@echo ... src/memory_manage.obj
+	@echo ... src/memory_manage.i
+	@echo ... src/memory_manage.s
 .PHONY : help
 
 

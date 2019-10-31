@@ -12,27 +12,32 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="94d0c91f-d6ea-4ee2-959e-b5ad8f79132e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/lib/stb_image.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/include/I_O.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/include/memory_manage.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/I_O.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/dnn.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/memory_manage.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/DNN.dir/C.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/DNN.dir/C.includecache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/DNN.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/DNN.dir/DependInfo.cmake" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/DNN.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/DNN.dir/build.make" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/DNN.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/DNN.dir/cmake_clean.cmake" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/DNN.dir/depend.internal" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/DNN.dir/depend.internal" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/DNN.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/DNN.dir/depend.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/DNN.dir/dnn.c.obj" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/DNN.dir/main.c.obj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/DNN.dir/dnn.obj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/DNN.dir/main.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/DNN.dir/main.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/DNN.dir/objects.a" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/DNN.dir/objects.a" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/DNN.dir/objects1.rsp" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/DNN.dir/objects1.rsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/DNN.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/DNN.dir/progress.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/progress.marks" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/progress.marks" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/DNN.cbp" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/DNN.cbp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/DNN.exe" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/DNN.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dnn.c" beforeDir="false" afterPath="$PROJECT_DIR$/dnn.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dnn.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/dnn.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dnn.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/dnn.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/dnn.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/stb_image.h" beforeDir="false" afterPath="$PROJECT_DIR$/lib/stb_image.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -61,6 +66,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="F:\DNN\src" />
       <recent name="F:\DNN\include" />
     </key>
   </component>
@@ -95,7 +101,7 @@
       <updated>1572402638892</updated>
       <workItem from="1572402641402" duration="17708000" />
       <workItem from="1572427339478" duration="9135000" />
-      <workItem from="1572437712063" duration="21388000" />
+      <workItem from="1572437712063" duration="31929000" />
     </task>
     <servers />
   </component>
@@ -119,40 +125,33 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/dnn.c</url>
-          <line>111</line>
-          <option name="timeStamp" value="16" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/lib/stb_image.h</url>
-          <line>323</line>
+          <line>324</line>
           <option name="timeStamp" value="28" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/dnn.c</url>
-          <line>78</line>
-          <option name="timeStamp" value="37" />
+          <url>file://$PROJECT_DIR$/main.c</url>
+          <line>7</line>
+          <option name="timeStamp" value="54" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/main.c</url>
-          <line>56</line>
-          <option name="timeStamp" value="41" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/main.c</url>
-          <line>50</line>
-          <option name="timeStamp" value="42" />
+          <url>file://$PROJECT_DIR$/src/dnn.c</url>
+          <line>77</line>
+          <option name="timeStamp" value="58" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <watches-manager>
       <configuration name="CMakeRunConfiguration">
-        <watch expression="_msize(p[0])" />
-        <watch expression="_msize(p[0][0])" />
-        <watch expression="_msize(p)" language="ObjectiveC" />
+        <watch expression="conv_height_idx" />
+        <watch expression="matrix_after_padding[conv_channel_idx][conv_height_idx][conv_width_idx]" />
+        <watch expression="parameters[kernel_idx][conv_channel_idx][conv_height_idx][conv_width_idx]" />
+        <watch expression="out_put_matrix" />
         <watch expression="conv_operation_ans" />
-        <watch expression="matrix_after_padding[conv_channel_idx][onv_height_idx][onv_width_idx]" />
-        <watch expression="parameters[kernel_idx][conv_channel_idx][onv_height_idx][onv_width_idx]" />
+        <watch expression="out_put_matrix[0][0][0]" language="ObjectiveC" />
+        <watch expression="out_put_matrix[0][0][1]" language="ObjectiveC" />
+        <watch expression="atof(parameter)" />
+        <watch expression="parameters" />
       </configuration>
     </watches-manager>
   </component>

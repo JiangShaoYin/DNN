@@ -83,19 +83,28 @@
 		<Unit filename="F:/DNN/1.c">
 			<Option target="DNN"/>
 		</Unit>
-		<Unit filename="F:/DNN/dnn.c">
+		<Unit filename="F:/DNN/include/I_O.h">
 			<Option target="DNN"/>
 		</Unit>
 		<Unit filename="F:/DNN/include/dnn.h">
 			<Option target="DNN"/>
 		</Unit>
-		<Unit filename="F:/DNN/lib/jiang.h">
+		<Unit filename="F:/DNN/include/memory_manage.h">
 			<Option target="DNN"/>
 		</Unit>
 		<Unit filename="F:/DNN/lib/stb_image.h">
 			<Option target="DNN"/>
 		</Unit>
 		<Unit filename="F:/DNN/main.c">
+			<Option target="DNN"/>
+		</Unit>
+		<Unit filename="F:/DNN/src/I_O.c">
+			<Option target="DNN"/>
+		</Unit>
+		<Unit filename="F:/DNN/src/dnn.c">
+			<Option target="DNN"/>
+		</Unit>
+		<Unit filename="F:/DNN/src/memory_manage.c">
 			<Option target="DNN"/>
 		</Unit>
 		<Unit filename="F:/DNN/CMakeLists.txt">

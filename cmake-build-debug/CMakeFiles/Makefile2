@@ -73,12 +73,12 @@ preinstall:
 CMakeFiles/DNN.dir/all:
 	$(MAKE) -f CMakeFiles\DNN.dir\build.make CMakeFiles/DNN.dir/depend
 	$(MAKE) -f CMakeFiles\DNN.dir\build.make CMakeFiles/DNN.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=F:\DNN\cmake-build-debug\CMakeFiles --progress-num=1,2,3,4 "Built target DNN"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=F:\DNN\cmake-build-debug\CMakeFiles --progress-num=1,2,3,4,5,6 "Built target DNN"
 .PHONY : CMakeFiles/DNN.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/DNN.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start F:\DNN\cmake-build-debug\CMakeFiles 4
+	$(CMAKE_COMMAND) -E cmake_progress_start F:\DNN\cmake-build-debug\CMakeFiles 6
 	$(MAKE) -f CMakeFiles\Makefile2 CMakeFiles/DNN.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start F:\DNN\cmake-build-debug\CMakeFiles 0
 .PHONY : CMakeFiles/DNN.dir/rule

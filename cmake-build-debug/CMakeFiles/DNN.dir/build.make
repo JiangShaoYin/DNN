@@ -69,18 +69,18 @@ CMakeFiles/DNN.dir/main.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/DNN.dir/main.s"
 	D:\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S F:\DNN\main.c -o CMakeFiles\DNN.dir\main.s
 
-CMakeFiles/DNN.dir/dnn.obj: CMakeFiles/DNN.dir/flags.make
-CMakeFiles/DNN.dir/dnn.obj: ../dnn.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=F:\DNN\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/DNN.dir/dnn.obj"
-	D:\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\DNN.dir\dnn.obj   -c F:\DNN\dnn.c
+CMakeFiles/DNN.dir/src/dnn.obj: CMakeFiles/DNN.dir/flags.make
+CMakeFiles/DNN.dir/src/dnn.obj: ../src/dnn.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=F:\DNN\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/DNN.dir/src/dnn.obj"
+	D:\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\DNN.dir\src\dnn.obj   -c F:\DNN\src\dnn.c
 
-CMakeFiles/DNN.dir/dnn.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/DNN.dir/dnn.i"
-	D:\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E F:\DNN\dnn.c > CMakeFiles\DNN.dir\dnn.i
+CMakeFiles/DNN.dir/src/dnn.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/DNN.dir/src/dnn.i"
+	D:\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E F:\DNN\src\dnn.c > CMakeFiles\DNN.dir\src\dnn.i
 
-CMakeFiles/DNN.dir/dnn.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/DNN.dir/dnn.s"
-	D:\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S F:\DNN\dnn.c -o CMakeFiles\DNN.dir\dnn.s
+CMakeFiles/DNN.dir/src/dnn.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/DNN.dir/src/dnn.s"
+	D:\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S F:\DNN\src\dnn.c -o CMakeFiles\DNN.dir\src\dnn.s
 
 CMakeFiles/DNN.dir/1.obj: CMakeFiles/DNN.dir/flags.make
 CMakeFiles/DNN.dir/1.obj: ../1.c
@@ -95,23 +95,53 @@ CMakeFiles/DNN.dir/1.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/DNN.dir/1.s"
 	D:\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S F:\DNN\1.c -o CMakeFiles\DNN.dir\1.s
 
+CMakeFiles/DNN.dir/src/I_O.obj: CMakeFiles/DNN.dir/flags.make
+CMakeFiles/DNN.dir/src/I_O.obj: ../src/I_O.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=F:\DNN\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/DNN.dir/src/I_O.obj"
+	D:\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\DNN.dir\src\I_O.obj   -c F:\DNN\src\I_O.c
+
+CMakeFiles/DNN.dir/src/I_O.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/DNN.dir/src/I_O.i"
+	D:\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E F:\DNN\src\I_O.c > CMakeFiles\DNN.dir\src\I_O.i
+
+CMakeFiles/DNN.dir/src/I_O.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/DNN.dir/src/I_O.s"
+	D:\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S F:\DNN\src\I_O.c -o CMakeFiles\DNN.dir\src\I_O.s
+
+CMakeFiles/DNN.dir/src/memory_manage.obj: CMakeFiles/DNN.dir/flags.make
+CMakeFiles/DNN.dir/src/memory_manage.obj: ../src/memory_manage.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=F:\DNN\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/DNN.dir/src/memory_manage.obj"
+	D:\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\DNN.dir\src\memory_manage.obj   -c F:\DNN\src\memory_manage.c
+
+CMakeFiles/DNN.dir/src/memory_manage.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/DNN.dir/src/memory_manage.i"
+	D:\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E F:\DNN\src\memory_manage.c > CMakeFiles\DNN.dir\src\memory_manage.i
+
+CMakeFiles/DNN.dir/src/memory_manage.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/DNN.dir/src/memory_manage.s"
+	D:\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S F:\DNN\src\memory_manage.c -o CMakeFiles\DNN.dir\src\memory_manage.s
+
 # Object files for target DNN
 DNN_OBJECTS = \
 "CMakeFiles/DNN.dir/main.obj" \
-"CMakeFiles/DNN.dir/dnn.obj" \
-"CMakeFiles/DNN.dir/1.obj"
+"CMakeFiles/DNN.dir/src/dnn.obj" \
+"CMakeFiles/DNN.dir/1.obj" \
+"CMakeFiles/DNN.dir/src/I_O.obj" \
+"CMakeFiles/DNN.dir/src/memory_manage.obj"
 
 # External object files for target DNN
 DNN_EXTERNAL_OBJECTS =
 
 DNN.exe: CMakeFiles/DNN.dir/main.obj
-DNN.exe: CMakeFiles/DNN.dir/dnn.obj
+DNN.exe: CMakeFiles/DNN.dir/src/dnn.obj
 DNN.exe: CMakeFiles/DNN.dir/1.obj
+DNN.exe: CMakeFiles/DNN.dir/src/I_O.obj
+DNN.exe: CMakeFiles/DNN.dir/src/memory_manage.obj
 DNN.exe: CMakeFiles/DNN.dir/build.make
 DNN.exe: CMakeFiles/DNN.dir/linklibs.rsp
 DNN.exe: CMakeFiles/DNN.dir/objects1.rsp
 DNN.exe: CMakeFiles/DNN.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=F:\DNN\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking C executable DNN.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=F:\DNN\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking C executable DNN.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\DNN.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

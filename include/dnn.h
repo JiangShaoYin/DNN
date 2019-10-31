@@ -6,15 +6,13 @@
 #define HELLO_JELLY_DNN_H
 
 
+float*** feature_padding(float*** input_pic, int padding);
+float*** convert_vector_2_3Dmatrix(unsigned char* input_pic, int width, int height, int channels);
+
+float*** conv1(float*** input_pic, char* parameter_file, int conv_width, int conv_height, int conv_channels,  int kernel_nums, int stride, int padding);
 
 
-float**** malloc_4D_array(int width, int height, int channels, int filter_nums);  // 分配4D卷积层内存
-float*** malloc_3D_array(int width, int height, int channels);  // 分配3D feature map 内存
-int loadParameters(char* path, float**** parameters, int width, int height, int channels, int filter_nums); // 加载模型参数到卷积层
-int free_3D_array(float*** p); // 释放卷积层
-void print_3D_array(float ***p);// 打印卷积层
-int free_4D_array(float**** p); // 释放卷积层
-void print_4D_array(float ****p);// 打印卷积层
+
 
 
 #endif //HELLO_JELLY_DNN_H

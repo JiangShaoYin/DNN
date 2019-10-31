@@ -313,7 +313,8 @@ RECENT REVISION HISTORY:
 //   - If you use STBI_NO_PNG (or _ONLY_ without PNG), and you still
 //     want the zlib decoder to be available, #define STBI_SUPPORT_ZLIB
 //
-
+#ifndef __STB_IMAGE__
+#define __STB_IMAGE__
 
 #ifndef STBI_NO_STDIO
 #include <stdio.h>
@@ -7528,3 +7529,5 @@ ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 ------------------------------------------------------------------------------
 */
+
+#endif
