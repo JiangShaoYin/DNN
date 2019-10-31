@@ -14,7 +14,7 @@
 
 char* filename = "../face.jpg";
 
-
+bool SAVE_FILE = FALSE;
 
 int main(){
 
@@ -77,15 +77,22 @@ int main(){
     float*** conv8_max_pooing = maxpooling(conv8_relu3D,2,2,0,"../conv8_max_pooing.txt");
 
 
+
     // fc0
-    float* fc0 = linear(conv8_max_pooing, "../parameters/linear0.weight", "../parameters/linear0.bias", 4096, 25088, "../fc0.txt", "../fc0_before_relu.txt");
+    float* fc0_input = convert_3Dmatrix_2_vector(conv8_max_pooing);
+    float* fc0 = linear(fc0_input, "../parameters/linear0.weight", "../parameters/linear0.bias", 4096, 25088, "../fc0.txt", "../fc0_before_relu.txt");
     float* fc0_relu = relu(fc0, "../fc0_relu.txt");
     float* fc0_dropout = dropout(fc0_relu, 0.5, "../fc0_dropout.txt");
 
     // fc1
-    float* fc1 = linear(fc0_dropout, "../parameters/linear0.weight", "../parameters/linear0.bias", 4096, 25088, "../fc0.txt", "../fc0_before_relu.txt");
-    float* fc0_relu = relu(fc0, "../fc0_relu.txt");
-    float* fc0_dropout = dropout(fc0_relu, 0.5, "../fc0_dropout.txt");
+    float* fc1 = linear(fc0_dropout, "../parameters/linear1.weight", "../parameters/linear1.bias", 4096, 4096, "../fc1.txt", "../fc1_before_relu.txt");
+    float* fc1_relu = relu(fc0, "../fc1_relu.txt");
+    float* fc1_dropout = dropout(fc0_relu, 0.5, "../fc1_dropout.txt");
+
+    //
+    float* fc2 = linear(fc0_dropout, "../parameters/last_linear.weight", "../parameters/last_linear.bias", 4096, 101, "../fc2.txt", "../fc2_before_relu.txt");
+    float ans = averagepool(fc2);
+    printf("%.2f\n", ans);
 
     return 0;
 }

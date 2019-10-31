@@ -51,6 +51,7 @@ float*** convert_vector_2_3Dmatrix(unsigned char* input_pic, int width, int heig
     stbi_image_free(input_pic);  // 释放上一级占用的内存空间
     return three_D_array;
 }
+
 float* convert_3Dmatrix_2_vector(float*** input_tensor){
     int input_channels = _msize(input_tensor) / sizeof(float**);
     int input_height = _msize(input_tensor[0]) / sizeof(float*);
@@ -58,16 +59,16 @@ float* convert_3Dmatrix_2_vector(float*** input_tensor){
 
     float* output = (float*)malloc(sizeof(float) * input_channels * input_height * input_width);
 
-    float fc_operate_ans = 0;
     for(int channel = 0; channel < input_channels; channel++){
         for(int row = 0; row < input_height; row++){
             for(int col = 0; col < input_width; col++){
-                int fc_matrix_row_idx = channel * input_height * input_width + row * input_width + col;
-                fc_operate_ans += input_tensor[channel][row][col] * weight[fc_matrix_row_idx][i];
+                int idx = channel * input_height * input_width + row * input_width + col;
+                output[idx] = input_tensor[channel][row][col];
             }
         }
     }
-    
+    free_3D_array(input_tensor);
+    return output;
 }
 
 float*** conv3D(float*** input_tensor, char* parameter_file, int conv_width, int conv_height,
@@ -77,8 +78,9 @@ float*** conv3D(float*** input_tensor, char* parameter_file, int conv_width, int
     int height = _msize(input_tensor[0]) / sizeof(float*);
     int width =  _msize(input_tensor[0][0]) / sizeof(float);
     // 先把输入变量保存一下
-    save_3Dmatrix_to_disk(input_name, input_tensor);
-
+    if(SAVE_FILE) {
+        save_3Dmatrix_to_disk(input_name, input_tensor);
+    }
     // 执行padding
     float*** matrix_after_padding = feature_padding(input_tensor, padding);
 
@@ -95,7 +97,9 @@ float*** conv3D(float*** input_tensor, char* parameter_file, int conv_width, int
     // 读参数到parameters中（4D matrix）
     load_conv_Parameters(parameter_file, parameters, conv_width, conv_height, conv_channels, kernel_nums);
     // 保存conv的参数到磁盘
-    save_4Dmatrix_to_disk(conv_name, parameters);
+    if(SAVE_FILE) {
+        save_4Dmatrix_to_disk(conv_name, parameters);
+    }
 
     for(int kernel_idx=0; kernel_idx < kernel_nums; kernel_idx++){
         for(int output_height_idx=0; output_height_idx < output_height; output_height_idx++){
@@ -120,8 +124,9 @@ float*** conv3D(float*** input_tensor, char* parameter_file, int conv_width, int
     }
     free_3D_array(matrix_after_padding); // 释放input空间
     free_4D_array(parameters);           // 释放参数占用的内存空间
-
-    save_3Dmatrix_to_disk(output_name, out_put_matrix); // 保存卷积层计算结果
+    if(SAVE_FILE) {
+        save_3Dmatrix_to_disk(output_name, out_put_matrix); // 保存卷积层计算结果
+    }
     return out_put_matrix;
 }
 float*** relu3D(float*** input_tensor, char* output_name){
@@ -138,7 +143,9 @@ float*** relu3D(float*** input_tensor, char* output_name){
             }
         }
     }
-    save_3Dmatrix_to_disk(output_name, input_tensor);
+    if(SAVE_FILE) {
+        save_3Dmatrix_to_disk(output_name, input_tensor);
+    }
     return input_tensor;
 }
 float* relu(float* input_tensor, char* output_name){
@@ -149,7 +156,9 @@ float* relu(float* input_tensor, char* output_name){
             input_tensor[k] = 0;
         }
     }
-    save_vector_to_disk(output_name, input_tensor);
+    if(SAVE_FILE) {
+        save_vector_to_disk(output_name, input_tensor);
+    }
     return input_tensor;
 }
 
@@ -188,11 +197,13 @@ float*** maxpooling(float*** input_tensor, int kernel_size, int stride, int padd
 
     free_3D_array(input_tensor);
     // 保存输出tensor
-    save_3Dmatrix_to_disk(output_name, output_matrix);
+    if(SAVE_FILE){
+        save_3Dmatrix_to_disk(output_name, output_matrix);
+    }
     return output_matrix;
 }
 
-float* linear(float*** input_tensor, char* file_weight, char* file_bias, int width, int height, char* fc_name, char* output_name){
+float* linear(float* input_tensor, char* file_weight, char* file_bias, int width, int height, char* fc_name, char* output_name){
     // 创建2D matrix， 读fc层的参数到weight矩阵中
     float** weight = malloc_2D_array(width, height);
     // 读参数到parameters中（2D matrix）
@@ -206,26 +217,23 @@ float* linear(float*** input_tensor, char* file_weight, char* file_bias, int wid
     // 申请 output_vector的内存
     float* output_vector = (float*)malloc(sizeof(float)* width);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+    for(int i = 0; i < width; i++) {
+        float fc_operate_ans = 0;
+        for (int j = 0; j < height; j++) {
+            fc_operate_ans += input_tensor[j] * weight[j][i];  // 让weight第i列的所有元素与input_tensor中所有元素相乘
+        }
+        output_vector[i] = fc_operate_ans;
+    }
 
 
     // 保存fc的参数到磁盘
 //    save_2Dmatrix_to_disk(fc_name, weight);
-    save_vector_to_disk(output_name, output_vector);
+    if(SAVE_FILE) {
+        save_vector_to_disk(output_name, output_vector);
+    }
 
-    free_3D_array(input_tensor);
+    free(input_tensor);
+    input_tensor = NULL;
     free_2D_array(weight);
     free(bias);
     return output_vector;
@@ -236,6 +244,19 @@ float* dropout(float* input_tensor, float p, char* output_name){
     for(int i = 0; i < width; i++){
         input_tensor[i] *= p;
     }
-    save_vector_to_disk(output_name, input_tensor);
+    if(SAVE_FILE) {
+        save_vector_to_disk(output_name, input_tensor);
+    }
     return input_tensor;
+}
+float averagepool(float* input_tensor){
+    int width =  _msize(input_tensor) / sizeof(float);
+    float ans = 0;
+    for(int i = 0; i < width; i++){
+        ans += input_tensor[i];
+    }
+
+    free(input_tensor);
+    input_tensor = NULL;
+    return ans / width;
 }

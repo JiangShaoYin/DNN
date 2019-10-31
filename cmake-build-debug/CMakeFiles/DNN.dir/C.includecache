@@ -9,6 +9,8 @@
 F:/DNN/include/I_O.h
 
 F:/DNN/include/dnn.h
+stdbool.h
+-
 
 F:/DNN/include/memory_manage.h
 
@@ -55,6 +57,48 @@ stdio.h
 -
 ./lib/stb_image.h
 F:/DNN/lib/stb_image.h
+windows.h
+-
+windef.h
+-
+
+F:/DNN/src/I_O.c
+../include/I_O.h
+F:/DNN/include/I_O.h
+../include/memory_manage.h
+F:/DNN/include/memory_manage.h
+../include/dnn.h
+F:/DNN/include/dnn.h
+string.h
+F:/DNN/src/string.h
+malloc.h
+-
+stdio.h
+-
+stdlib.h
+-
+errno.h
+-
+
+F:/DNN/src/dnn.c
+../include/dnn.h
+F:/DNN/include/dnn.h
+../include/I_O.h
+F:/DNN/include/I_O.h
+../include/memory_manage.h
+F:/DNN/include/memory_manage.h
+stdio.h
+F:/DNN/src/stdio.h
+fcntl.h
+-
+stdlib.h
+-
+unistd.h
+-
+sys/types.h
+-
+sys/stat.h
+-
 windows.h
 -
 windef.h
