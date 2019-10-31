@@ -51,6 +51,24 @@ float*** convert_vector_2_3Dmatrix(unsigned char* input_pic, int width, int heig
     stbi_image_free(input_pic);  // 释放上一级占用的内存空间
     return three_D_array;
 }
+float* convert_3Dmatrix_2_vector(float*** input_tensor){
+    int input_channels = _msize(input_tensor) / sizeof(float**);
+    int input_height = _msize(input_tensor[0]) / sizeof(float*);
+    int input_width =  _msize(input_tensor[0][0]) / sizeof(float);
+
+    float* output = (float*)malloc(sizeof(float) * input_channels * input_height * input_width);
+
+    float fc_operate_ans = 0;
+    for(int channel = 0; channel < input_channels; channel++){
+        for(int row = 0; row < input_height; row++){
+            for(int col = 0; col < input_width; col++){
+                int fc_matrix_row_idx = channel * input_height * input_width + row * input_width + col;
+                fc_operate_ans += input_tensor[channel][row][col] * weight[fc_matrix_row_idx][i];
+            }
+        }
+    }
+    
+}
 
 float*** conv3D(float*** input_tensor, char* parameter_file, int conv_width, int conv_height,
         int conv_channels,  int kernel_nums, int stride, int padding, char* input_name, char* conv_name, char* output_name){
@@ -188,31 +206,36 @@ float* linear(float*** input_tensor, char* file_weight, char* file_bias, int wid
     // 申请 output_vector的内存
     float* output_vector = (float*)malloc(sizeof(float)* width);
 
-    int input_channels = _msize(input_tensor) / sizeof(float**);
-    int input_height = _msize(input_tensor[0]) / sizeof(float*);
-    int input_width =  _msize(input_tensor[0][0]) / sizeof(float);
 
 
-    for(int i = 0; i < width; i++){
-        float fc_operate_ans = 0;
-        for(int channel = 0; channel < input_channels; channel++){
-            for(int row = 0; row < input_height; row++){
-                for(int col = 0; col < input_width; col++){
-                    int fc_matrix_row_idx = channel * input_height * input_width + row * input_width + col;
-                    fc_operate_ans += input_tensor[channel][row][col] * weight[fc_matrix_row_idx][i];
-                }
-            }
-        }
-        output_vector[i] = fc_operate_ans + bias[i];
-    }
+
+
+
+
+
+
+
+
+
+
+
+
 
     // 保存fc的参数到磁盘
-    save_2Dmatrix_to_disk(fc_name, weight);
+//    save_2Dmatrix_to_disk(fc_name, weight);
     save_vector_to_disk(output_name, output_vector);
 
     free_3D_array(input_tensor);
     free_2D_array(weight);
     free(bias);
     return output_vector;
+}
+float* dropout(float* input_tensor, float p, char* output_name){
+    int width =  _msize(input_tensor) / sizeof(float);
 
+    for(int i = 0; i < width; i++){
+        input_tensor[i] *= p;
+    }
+    save_vector_to_disk(output_name, input_tensor);
+    return input_tensor;
 }
