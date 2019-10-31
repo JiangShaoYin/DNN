@@ -10,7 +10,7 @@
 # include <stdlib.h>
 # include <errno.h>
 
-int loadParameters(char* path, float**** parameters, int width, int height, int channels, int filter_nums){
+int load_conv_Parameters(char* path, float**** parameters, int width, int height, int channels, int filter_nums){
     FILE *fp = fopen(path, "r");
     if(fp == NULL) {
         int errNum = errno;
@@ -38,6 +38,56 @@ int loadParameters(char* path, float**** parameters, int width, int height, int 
 //        printf("%.8f\n",parameters[idx_filter][idx_channels][idx_height][idx_width]);
         idx++;
 
+    }
+    fclose(fp);
+    return 0;
+}
+int load_weight_Parameters(char* path, float** parameters, int width, int height){
+    FILE *fp = fopen(path, "r");
+    if(fp == NULL) {
+        int errNum = errno;
+        printf("open fail errno = %d", errNum);
+        return -1;
+    }
+
+    char parameter[30] ;       // 读dat文件里面保存的每个参数
+    int idx = 0;               // 第idx个参数
+
+    int parameter_nums = width * height;
+
+    int idx_height=0, idx_width=0;
+    while(feof(fp) == 0 && idx < parameter_nums) { // 文件未到末尾,feof返回0
+
+        idx_height = idx / width; // 101 % 3 * 3 * 3 == 20,   20 % 9 = 2, 2/3 = 0
+        idx_width = idx % width;  // 2 %3 = 2
+
+        memset(parameter, 0, 30);  // 初始清空缓冲区
+        fgets(parameter, 99, fp);  // 从fp中最多读99个char到input里面，如果提前遇到\n则读取结束
+
+        parameters[idx_height][idx_width] = atof(parameter);
+        idx++;
+
+    }
+    fclose(fp);
+    return 0;
+}
+int load_bias_Parameters(char* path, float* bias, int width){
+    FILE *fp = fopen(path, "r");
+    if(fp == NULL) {
+        int errNum = errno;
+        printf("open fail errno = %d", errNum);
+        return -1;
+    }
+
+    char parameter[30] ;       // 读dat文件里面保存的每个参数
+
+    int idx = 0;               // 第idx个参数
+    while(feof(fp) == 0 && idx < width) { // 文件未到末尾,feof返回0
+
+        memset(parameter, 0, 30);  // 初始清空缓冲区
+        fgets(parameter, 99, fp);  // 从fp中最多读99个char到input里面，如果提前遇到\n则读取结束
+
+        bias[idx] = atof(parameter);
     }
     fclose(fp);
     return 0;
@@ -77,7 +127,37 @@ void print_4D_array(float ****p){
         }
     }
 }
+int save_vector_to_disk(char* filepath, float* p){
+    FILE* fp = fopen(filepath, "w");
+    int width =  _msize(p) / sizeof(float);
 
+    for(int l = 0; l < width; l++){
+        fprintf(fp, "%.8f ", p[l]);
+    }
+
+    fclose(fp);
+    return 0;
+}
+int save_2Dmatrix_to_disk(char* filepath, float** p){
+    FILE* fp = fopen(filepath, "w");
+
+    int height = _msize(p) / sizeof(float*);
+    printf("%d\n", height);
+    int width =  _msize(p[0]) / sizeof(float);
+    printf("%d\n", width);
+
+    int idx = 0;
+    for (int k = 0; k < height; k++) {
+        fprintf(fp,"\nrow %d: \n", k);
+        for(int l = 0; l < width; l++){
+            fprintf(fp, "%.8f ", p[k][l]);
+            idx++;
+        }
+    }
+
+    fclose(fp);
+    return 0;
+}
 int save_3Dmatrix_to_disk(char* filepath, float*** p){
     FILE* fp = fopen(filepath, "w");
 

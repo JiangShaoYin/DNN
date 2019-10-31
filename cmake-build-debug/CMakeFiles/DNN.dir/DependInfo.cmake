@@ -8,6 +8,7 @@ set(CMAKE_DEPENDS_CHECK_C
   "F:/DNN/main.c" "F:/DNN/cmake-build-debug/CMakeFiles/DNN.dir/main.obj"
   "F:/DNN/src/I_O.c" "F:/DNN/cmake-build-debug/CMakeFiles/DNN.dir/src/I_O.obj"
   "F:/DNN/src/dnn.c" "F:/DNN/cmake-build-debug/CMakeFiles/DNN.dir/src/dnn.obj"
+  "F:/DNN/src/layer.c" "F:/DNN/cmake-build-debug/CMakeFiles/DNN.dir/src/layer.obj"
   "F:/DNN/src/memory_manage.c" "F:/DNN/cmake-build-debug/CMakeFiles/DNN.dir/src/memory_manage.obj"
   )
 set(CMAKE_C_COMPILER_ID "GNU")

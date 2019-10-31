@@ -9,7 +9,7 @@ set(APP_SRC main.c)
 #link_directories(${LINK_DIR})   # 设置库目录
 #link_libraries(wfdb)            # 设置要链接的库
 
-add_executable(${PROJECT_NAME} main.c include/dnn.h src/dnn.c 1.c lib/stb_image.h include/I_O.h src/I_O.c src/memory_manage.c include/memory_manage.h)
+add_executable(${PROJECT_NAME} main.c include/dnn.h src/dnn.c 1.c lib/stb_image.h include/I_O.h src/I_O.c src/memory_manage.c include/memory_manage.h src/layer.c include/layer.h)
 
 #print message
 message(${PROJECT_SOURCE_DIR})

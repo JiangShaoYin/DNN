@@ -34,6 +34,29 @@ float*** malloc_3D_array(int width, int height, int channels) {
     }
     return para_array;
 }
+float** malloc_2D_array(int width, int height) {
+    float **para_array = (float**)malloc(sizeof(float*) * height);  // 申请height个vector
+
+    for (int i = 0;i < height; i++) {
+            para_array[i] = (float *) malloc(sizeof(float) * width);// 申请长度为width的数组
+            memset(para_array[i], 0, width);
+    }
+    return para_array;
+}
+int free_2D_array(float** p){
+    int height = _msize(p) / sizeof(float*);
+    int width = _msize(p[0]) / sizeof(float);
+
+    for (int j = 0; j < height; j++) {
+        free(p[j]);
+        p[j] = NULL;
+    }
+
+    free(p);
+    p = NULL;
+    printf("free_2D_array has done.\n");
+    return 0;
+}
 int free_3D_array(float*** p){
     int channels = _msize(p) / sizeof(float**);
     int height = _msize(p[0]) / sizeof(float*);

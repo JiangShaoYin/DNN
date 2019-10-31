@@ -5,6 +5,7 @@ CMakeFiles/DNN.dir/1.obj: ../1.c
 
 CMakeFiles/DNN.dir/main.obj: ../include/I_O.h
 CMakeFiles/DNN.dir/main.obj: ../include/dnn.h
+CMakeFiles/DNN.dir/main.obj: ../include/memory_manage.h
 CMakeFiles/DNN.dir/main.obj: ../lib/stb_image.h
 CMakeFiles/DNN.dir/main.obj: ../main.c
 
@@ -17,6 +18,9 @@ CMakeFiles/DNN.dir/src/dnn.obj: ../include/I_O.h
 CMakeFiles/DNN.dir/src/dnn.obj: ../include/dnn.h
 CMakeFiles/DNN.dir/src/dnn.obj: ../include/memory_manage.h
 CMakeFiles/DNN.dir/src/dnn.obj: ../src/dnn.c
+
+CMakeFiles/DNN.dir/src/layer.obj: ../include/layer.h
+CMakeFiles/DNN.dir/src/layer.obj: ../src/layer.c
 
 CMakeFiles/DNN.dir/src/memory_manage.obj: ../include/memory_manage.h
 CMakeFiles/DNN.dir/src/memory_manage.obj: ../src/memory_manage.c

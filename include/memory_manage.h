@@ -8,6 +8,8 @@
 
 float**** malloc_4D_array(int width, int height, int channels, int filter_nums);
 float*** malloc_3D_array(int width, int height, int channels);
+float** malloc_2D_array(int width, int height);
+int free_2D_array(float** p);
 int free_3D_array(float*** p);
 int free_4D_array(float**** p);
 

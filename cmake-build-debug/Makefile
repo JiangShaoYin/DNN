@@ -183,6 +183,21 @@ src/dnn.s:
 .PHONY : src/dnn.s
 
 # target to build an object file
+src/layer.obj:
+	$(MAKE) -f CMakeFiles\DNN.dir\build.make CMakeFiles/DNN.dir/src/layer.obj
+.PHONY : src/layer.obj
+
+# target to preprocess a source file
+src/layer.i:
+	$(MAKE) -f CMakeFiles\DNN.dir\build.make CMakeFiles/DNN.dir/src/layer.i
+.PHONY : src/layer.i
+
+# target to generate assembly for a file
+src/layer.s:
+	$(MAKE) -f CMakeFiles\DNN.dir\build.make CMakeFiles/DNN.dir/src/layer.s
+.PHONY : src/layer.s
+
+# target to build an object file
 src/memory_manage.obj:
 	$(MAKE) -f CMakeFiles\DNN.dir\build.make CMakeFiles/DNN.dir/src/memory_manage.obj
 .PHONY : src/memory_manage.obj
@@ -218,6 +233,9 @@ help:
 	@echo ... src/dnn.obj
 	@echo ... src/dnn.i
 	@echo ... src/dnn.s
+	@echo ... src/layer.obj
+	@echo ... src/layer.i
+	@echo ... src/layer.s
 	@echo ... src/memory_manage.obj
 	@echo ... src/memory_manage.i
 	@echo ... src/memory_manage.s
