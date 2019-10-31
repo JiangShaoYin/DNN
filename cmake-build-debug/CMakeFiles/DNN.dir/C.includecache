@@ -80,27 +80,3 @@ stdlib.h
 errno.h
 -
 
-F:/DNN/src/dnn.c
-../include/dnn.h
-F:/DNN/include/dnn.h
-../include/I_O.h
-F:/DNN/include/I_O.h
-../include/memory_manage.h
-F:/DNN/include/memory_manage.h
-stdio.h
-F:/DNN/src/stdio.h
-fcntl.h
--
-stdlib.h
--
-unistd.h
--
-sys/types.h
--
-sys/stat.h
--
-windows.h
--
-windef.h
--
-

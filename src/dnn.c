@@ -13,6 +13,7 @@
 # include <sys/stat.h>
 # include <windows.h>
 # include <windef.h>
+# include <math.h>
 
 
 float*** feature_padding(float*** input_pic, int padding){
@@ -259,4 +260,28 @@ float averagepool(float* input_tensor){
     free(input_tensor);
     input_tensor = NULL;
     return ans / width;
+}
+void softmax(float* input_tensor){
+    int width =  _msize(input_tensor) / sizeof(float);
+    float total = 0;
+    for(int i = 0; i < width; i++){
+        total += exp(input_tensor[i]);
+    }
+    for(int i = 0; i < width; i++){
+        input_tensor[i] = exp(input_tensor[i]) / total;
+    }
+
+    return ;
+}
+
+float cal(float* input_tensor){
+    int width =  _msize(input_tensor) / sizeof(float);
+    float ans = 0;
+    for(int i = 0; i < width; i++){
+        ans += input_tensor[i] * (i+1);
+    }
+
+    free(input_tensor);
+    input_tensor = NULL;
+    return ans;
 }

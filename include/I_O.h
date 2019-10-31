@@ -9,6 +9,7 @@
 int load_conv_Parameters(char* path, float**** parameters, int width, int height, int channels, int filter_nums); // 加载模型参数到卷积层
 int load_weight_Parameters(char* path, float** parameters, int width, int height);
 int load_bias_Parameters(char* path, float* bias, int width);
+int load_fc_result_2_memory(char* path, float* output, int variables_nums);
 
 int save_vector_to_disk(char* filepath, float* p);
 int save_2Dmatrix_to_disk(char* filepath, float** p);

@@ -86,11 +86,14 @@ int load_bias_Parameters(char* path, float* bias, int width){
 
         memset(parameter, 0, 30);  // 初始清空缓冲区
         fgets(parameter, 99, fp);  // 从fp中最多读99个char到input里面，如果提前遇到\n则读取结束
-
-        bias[idx] = atof(parameter);
+//        printf("%dth: %s", idx,parameter);
+        bias[idx++] = atof(parameter);
     }
     fclose(fp);
     return 0;
+}
+int load_fc_result_2_memory(char* path, float* output, int variables_nums){
+    return load_bias_Parameters(path, output, variables_nums);
 }
 
 void print_3D_array(float ***p){
@@ -132,7 +135,7 @@ int save_vector_to_disk(char* filepath, float* p){
     int width =  _msize(p) / sizeof(float);
 
     for(int l = 0; l < width; l++){
-        fprintf(fp, "%.8f ", p[l]);
+        fprintf(fp, "%.8f\n", p[l]);
     }
 
     fclose(fp);
@@ -198,6 +201,33 @@ int save_4Dmatrix_to_disk(char* filepath, float**** p){
                 }
             }
         }
+    }
+    fclose(fp);
+    return 0;
+}
+
+float* load_calculate_result_2_memeory(char* path, int variables_nums){
+    FILE *fp = fopen(path, "r");
+    if(fp == NULL) {
+        int errNum = errno;
+        printf("open fail errno = %d", errNum);
+        return NULL;
+    }
+
+    float* output = (float*)malloc(sizeof(float) * variables_nums);
+
+    char parameter[30] ;       // 读dat文件里面保存的每个参数
+    int idx = 0;               // 第idx个参数
+
+
+    while(feof(fp) == 0) { // 文件未到末尾,feof返回0
+
+        memset(parameter, 0, 30);  // 初始清空缓冲区
+        fgets(parameter, 99, fp);  // 从fp中最多读99个char到input里面，如果提前遇到\n则读取结束
+
+        output[idx] = atof(parameter);
+        idx++;
+
     }
     fclose(fp);
     return 0;

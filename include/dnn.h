@@ -22,6 +22,9 @@ float* linear(float* input_tensor, char* parameter_wight, char* parameter_bias, 
 float* dropout(float* input_tensor, float p, char* output_name);
 float averagepool(float* input_tensor);
 
+void softmax(float* input_tensor);
+
+float cal(float* input_tensor);
 
 
 
