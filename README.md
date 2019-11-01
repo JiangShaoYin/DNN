@@ -1,5 +1,5 @@
 # C语言实现神经网络的前向传播
-### background
+## background
 
 已有".pth"模型文件,  从模型中读取参数, 接收固定尺寸的人脸图片输入（224 * 224），利用模型， 计算照片中人的年纪。
 
@@ -56,7 +56,7 @@ softmax()
 
 ![](pics/QQ截图20191101125416.png)
 
-### usage
+## usage
 
 在main.c文件中设置输入图片和是否保存网络参数。
 
@@ -65,7 +65,7 @@ char* FILEPATH = "../face.jpg"; // 尚未完成resize功能，目前只能接受
 bool SAVE_FILE = FALSE;  // 设置全局变量，控制是否保存网络参数，和中间层的feature map
 ```
 
-### pipeline
+## pipeline
 
 - 在python里面将pth文件里面的每层参数打开，分别写入各自name命名的文件中（没有找到C语言下读取pytorch训练模型的API， 先用这种原始的方式读参数）。
 
@@ -75,7 +75,10 @@ bool SAVE_FILE = FALSE;  // 设置全局变量，控制是否保存网络参数�
 
 - 输出计算结果
 
-#### example
+## example
+
 模型在笔记本上训了1个epoch， 准备率较低， 测试图片的输出结果是49岁。
 
 ![](pics/QQ截图20191101155354.png)
+
+the end~
