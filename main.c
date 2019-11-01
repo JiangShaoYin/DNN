@@ -11,6 +11,6 @@ bool SAVE_FILE = FALSE;  // 设置全局变量，控制是否保存网络参数�
 int main(){
     int age = forward(FILEPATH);
     printf("\n\nthe age is : %d\n", age);
-    return 0
+    return 0;
 }
 
