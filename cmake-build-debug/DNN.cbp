@@ -80,16 +80,10 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="F:/DNN/1.c">
-			<Option target="DNN"/>
-		</Unit>
 		<Unit filename="F:/DNN/include/I_O.h">
 			<Option target="DNN"/>
 		</Unit>
 		<Unit filename="F:/DNN/include/dnn.h">
-			<Option target="DNN"/>
-		</Unit>
-		<Unit filename="F:/DNN/include/layer.h">
 			<Option target="DNN"/>
 		</Unit>
 		<Unit filename="F:/DNN/include/memory_manage.h">
@@ -105,9 +99,6 @@
 			<Option target="DNN"/>
 		</Unit>
 		<Unit filename="F:/DNN/src/dnn.c">
-			<Option target="DNN"/>
-		</Unit>
-		<Unit filename="F:/DNN/src/layer.c">
 			<Option target="DNN"/>
 		</Unit>
 		<Unit filename="F:/DNN/src/memory_manage.c">

@@ -10,9 +10,9 @@
 # include <stdlib.h>
 # include <errno.h>
 
-int load_conv_Parameters(char* path, float**** parameters, int width, int height, int channels, int filter_nums){
+int load_conv_Parameters(char* path, float**** parameters, int width, int height, int channels, int filter_nums){ // 加载conv参数到卷积层
     FILE *fp = fopen(path, "r");
-    if(fp == NULL) {
+    if (fp == NULL) {
         int errNum = errno;
         printf("open fail errno = %d", errNum);
         return -1;
@@ -33,18 +33,16 @@ int load_conv_Parameters(char* path, float**** parameters, int width, int height
 
         memset(parameter, 0, 30);  // 初始清空缓冲区
         fgets(parameter, 99, fp);  // 从fp中最多读99个char到input里面，如果提前遇到\n则读取结束
-//        printf("parameter：%s\n", parameter);
-        parameters[idx_filter][idx_channels][idx_height][idx_width] = atof(parameter);
-//        printf("%.8f\n",parameters[idx_filter][idx_channels][idx_height][idx_width]);
+        parameters[idx_filter][idx_channels][idx_height][idx_width] = atof(parameter); // 将读出的sting数转为float，存储起来
         idx++;
 
     }
     fclose(fp);
     return 0;
 }
-int load_weight_Parameters(char* path, float** parameters, int width, int height){
+int load_weight_Parameters(char* path, float** parameters, int width, int height){ // 加载weight参数到fc层
     FILE *fp = fopen(path, "r");
-    if(fp == NULL) {
+    if (fp == NULL) {
         int errNum = errno;
         printf("open fail errno = %d", errNum);
         return -1;
@@ -71,9 +69,10 @@ int load_weight_Parameters(char* path, float** parameters, int width, int height
     fclose(fp);
     return 0;
 }
-int load_bias_Parameters(char* path, float* bias, int width){
+
+int load_bias_Parameters(char* path, float* bias, int width){  // 加载bias参数到fc层
     FILE *fp = fopen(path, "r");
-    if(fp == NULL) {
+    if (fp == NULL) {
         int errNum = errno;
         printf("open fail errno = %d", errNum);
         return -1;
@@ -92,7 +91,8 @@ int load_bias_Parameters(char* path, float* bias, int width){
     fclose(fp);
     return 0;
 }
-int load_fc_result_2_memory(char* path, float* output, int variables_nums){
+
+int load_fc_result_2_memory(char* path, float* output, int variables_nums){ // 将指定全连接层的输出，读入内存
     return load_bias_Parameters(path, output, variables_nums);
 }
 
@@ -113,6 +113,7 @@ void print_3D_array(float ***p){
         }
     }
 }
+
 void print_4D_array(float ****p){
     int filter_nums = _msize(p) / sizeof(float***);
     int channels = _msize(p[0]) / sizeof(float**);
@@ -130,30 +131,31 @@ void print_4D_array(float ****p){
         }
     }
 }
-int save_vector_to_disk(char* filepath, float* p){
-    FILE* fp = fopen(filepath, "w");
-    int width =  _msize(p) / sizeof(float);
 
-    for(int l = 0; l < width; l++){
-        fprintf(fp, "%.8f\n", p[l]);
+int save_vector_to_disk(char* filepath, float* arrar_to_be_saved){
+    FILE* fp = fopen(filepath, "w");
+    int width =  _msize(arrar_to_be_saved) / sizeof(float);
+
+    for(int i = 0; i < width; i++){
+        fprintf(fp, "%.8f\n", arrar_to_be_saved[i]);
     }
 
     fclose(fp);
     return 0;
 }
-int save_2Dmatrix_to_disk(char* filepath, float** p){
+int save_2Dmatrix_to_disk(char* filepath, float** arrar_to_be_saved){
     FILE* fp = fopen(filepath, "w");
 
-    int height = _msize(p) / sizeof(float*);
+    int height = _msize(arrar_to_be_saved) / sizeof(float*);
     printf("%d\n", height);
-    int width =  _msize(p[0]) / sizeof(float);
+    int width =  _msize(arrar_to_be_saved[0]) / sizeof(float);
     printf("%d\n", width);
 
     int idx = 0;
-    for (int k = 0; k < height; k++) {
-        fprintf(fp,"\nrow %d: \n", k);
-        for(int l = 0; l < width; l++){
-            fprintf(fp, "%.8f ", p[k][l]);
+    for (int i = 0; i < height; i++) {
+        fprintf(fp,"\nrow %d: \n", i);
+        for(int j = 0; j < width; j++){
+            fprintf(fp, "%.8f ", arrar_to_be_saved[i][j]);
             idx++;
         }
     }
@@ -161,12 +163,12 @@ int save_2Dmatrix_to_disk(char* filepath, float** p){
     fclose(fp);
     return 0;
 }
-int save_3Dmatrix_to_disk(char* filepath, float*** p){
+int save_3Dmatrix_to_disk(char* filepath, float*** arrar_to_be_saved){
     FILE* fp = fopen(filepath, "w");
 
-    int channels = _msize(p) / sizeof(float**);
-    int height = _msize(p[0]) / sizeof(float*);
-    int width =  _msize(p[0][0]) / sizeof(float);
+    int channels = _msize(arrar_to_be_saved) / sizeof(float**);
+    int height = _msize(arrar_to_be_saved[0]) / sizeof(float*);
+    int width =  _msize(arrar_to_be_saved[0][0]) / sizeof(float);
 
     int idx = 0;
     for (int j = 0; j < channels; j++) {
@@ -174,7 +176,7 @@ int save_3Dmatrix_to_disk(char* filepath, float*** p){
         for (int k = 0; k < height; k++) {
             fprintf(fp,"\nrow %d: \n", k);
             for(int l = 0; l < width; l++){
-                fprintf(fp, "%.8f ", p[j][k][l]);
+                fprintf(fp, "%.8f ", arrar_to_be_saved[j][k][l]);
                 idx++;
             }
         }
@@ -182,13 +184,13 @@ int save_3Dmatrix_to_disk(char* filepath, float*** p){
     fclose(fp);
     return 0;
 }
-int save_4Dmatrix_to_disk(char* filepath, float**** p){
+int save_4Dmatrix_to_disk(char* filepath, float**** arrar_to_be_saved){
     FILE* fp = fopen(filepath, "w");
 
-    int filter_nums = _msize(p) / sizeof(float***);
-    int channels = _msize(p[0]) / sizeof(float**);
-    int height = _msize(p[0][0]) / sizeof(float*);
-    int width =  _msize(p[0][0][0]) / sizeof(float);
+    int filter_nums = _msize(arrar_to_be_saved) / sizeof(float***);
+    int channels = _msize(arrar_to_be_saved[0]) / sizeof(float**);
+    int height = _msize(arrar_to_be_saved[0][0]) / sizeof(float*);
+    int width =  _msize(arrar_to_be_saved[0][0][0]) / sizeof(float);
 
     for (int i = 0; i < filter_nums; i++) {
         fprintf(fp,"\n\nkernel %d: ", i);
@@ -197,7 +199,7 @@ int save_4Dmatrix_to_disk(char* filepath, float**** p){
             for (int k = 0; k < height; k++) {
                 fprintf(fp,"\nrow %d: \n", k);
                 for(int l = 0; l < width; l++){
-                    fprintf(fp, "%.8f ", p[i][j][k][l]);
+                    fprintf(fp, "%.8f ", arrar_to_be_saved[i][j][k][l]);
                 }
             }
         }
@@ -206,9 +208,9 @@ int save_4Dmatrix_to_disk(char* filepath, float**** p){
     return 0;
 }
 
-float* load_calculate_result_2_memeory(char* path, int variables_nums){
+float* load_calculate_result_2_memeory(char* path, int variables_nums){ // 将中间过程产生的计算结果，读入内存
     FILE *fp = fopen(path, "r");
-    if(fp == NULL) {
+    if (fp == NULL) {
         int errNum = errno;
         printf("open fail errno = %d", errNum);
         return NULL;

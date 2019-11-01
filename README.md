@@ -52,11 +52,24 @@
   softmax()
   ```
 
-  输出目标年纪的101维向量后，用softmax计算年龄的概率分布，以为把概率当成权值p，总年龄为：
-  $$
-  Output_{age} = \sum_{age=1}^{101}p_{age}\cdot {age}
-  $$
-  
+  输出目标年纪的101维向量后，用softmax计算年龄的概率分布，把概率当成权值p，总年龄为：
 
 ![](pics/QQ截图20191101125416.png)
 
+* usage
+
+  在main.c文件中设置输入图片和是否保存网络参数。
+
+  ```cpp
+  char* FILEPATH = "../face.jpg"; // 尚未完成resize功能，目前只能接受224*224*3的图片输入
+  bool SAVE_FILE = FALSE;  // 设置全局变量，控制是否保存网络参数，和中间层的feature map
+  ```
+  
+* pipeline
+
+  * 在python里面将pth文件里面的每层参数打开，分别写入各自name命名的文件中（没有找到C语言下读取pytorch训练模型的API， 先用这种原始的方式读参数）。
+
+  ![](pics/QQ截图20191101152707.png)
+  * 用c读文件，load到相应的conv矩阵中，开始前向传播。
+  * 输出计算结果。
+  

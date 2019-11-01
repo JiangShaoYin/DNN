@@ -1,9 +1,7 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/DNN.dir/1.obj"
   "CMakeFiles/DNN.dir/main.obj"
   "CMakeFiles/DNN.dir/src/I_O.obj"
   "CMakeFiles/DNN.dir/src/dnn.obj"
-  "CMakeFiles/DNN.dir/src/layer.obj"
   "CMakeFiles/DNN.dir/src/memory_manage.obj"
   "DNN.exe"
   "DNN.exe.manifest"

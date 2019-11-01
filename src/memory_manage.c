@@ -54,7 +54,6 @@ int free_2D_array(float** p){
 
     free(p);
     p = NULL;
-    printf("free_2D_array has done.\n");
     return 0;
 }
 int free_3D_array(float*** p){
@@ -76,7 +75,6 @@ int free_3D_array(float*** p){
 
     free(p);
     p = NULL;
-    printf("free_3D_array has done.\n");
     return 0;
 }
 int free_4D_array(float**** p){
@@ -105,6 +103,5 @@ int free_4D_array(float**** p){
     }
     free(p);
     p = NULL;
-    printf("free_4D_array has done.\n");
     return 0;
 }

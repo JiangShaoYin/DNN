@@ -4,16 +4,12 @@
 # include "../include/dnn.h"
 # include "../include/I_O.h"
 # include "../include/memory_manage.h"
-
 # include "stdio.h"
 # include <fcntl.h>
 # include <stdlib.h>
-# include <unistd.h>
-# include <sys/types.h>
-# include <sys/stat.h>
-# include <windows.h>
 # include <windef.h>
 # include <math.h>
+# include "../lib/stb_image.h"
 
 
 float*** feature_padding(float*** input_pic, int padding){
@@ -21,12 +17,13 @@ float*** feature_padding(float*** input_pic, int padding){
     int height = _msize(input_pic[0]) / sizeof(float*);
     int width =  _msize(input_pic[0][0]) / sizeof(float);
 
-    int new_height = height + 2 * padding;
+    int new_height = height + 2 * padding; // padding之后的高
     int new_width = width + 2 * padding;
-    float*** matrix_after_padding = malloc_3D_array(new_width, new_height, channels); // padding之后的数组
+    float*** matrix_after_padding = malloc_3D_array(new_width, new_height, channels); // 为padding之后的matrix申请空间
+
     for(int i = 0; i < channels; i++){
         for(int j = 1; j < new_height - 1; j++){ // 第0行，和最后一行保留原始值0
-            memcpy(&matrix_after_padding[i][j][1], input_pic[i][j - 1], width * sizeof(float)); // width第1个值不填充
+            memcpy(&matrix_after_padding[i][j][1], input_pic[i][j - 1], width * sizeof(float)); // &matrix_after_padding[i][j][1],从width第1个值后开始填充，
         }
     }
 
@@ -53,7 +50,7 @@ float*** convert_vector_2_3Dmatrix(unsigned char* input_pic, int width, int heig
     return three_D_array;
 }
 
-float* convert_3Dmatrix_2_vector(float*** input_tensor){
+float* convert_3Dmatrix_2_vector(float*** input_tensor){ // 将featuremap转成一维tensor，方便全连接层计算
     int input_channels = _msize(input_tensor) / sizeof(float**);
     int input_height = _msize(input_tensor[0]) / sizeof(float*);
     int input_width =  _msize(input_tensor[0][0]) / sizeof(float);
@@ -63,12 +60,12 @@ float* convert_3Dmatrix_2_vector(float*** input_tensor){
     for(int channel = 0; channel < input_channels; channel++){
         for(int row = 0; row < input_height; row++){
             for(int col = 0; col < input_width; col++){
-                int idx = channel * input_height * input_width + row * input_width + col;
+                int idx = channel * input_height * input_width + row * input_width + col; // input_tensor[channel][row][col] 对应idx在一维vector上所指向的值
                 output[idx] = input_tensor[channel][row][col];
             }
         }
     }
-    free_3D_array(input_tensor);
+    free_3D_array(input_tensor); // 释放输入matrix的空间
     return output;
 }
 
@@ -79,7 +76,7 @@ float*** conv3D(float*** input_tensor, char* parameter_file, int conv_width, int
     int height = _msize(input_tensor[0]) / sizeof(float*);
     int width =  _msize(input_tensor[0][0]) / sizeof(float);
     // 先把输入变量保存一下
-    if(SAVE_FILE) {
+    if (SAVE_FILE) {
         save_3Dmatrix_to_disk(input_name, input_tensor);
     }
     // 执行padding
@@ -98,7 +95,7 @@ float*** conv3D(float*** input_tensor, char* parameter_file, int conv_width, int
     // 读参数到parameters中（4D matrix）
     load_conv_Parameters(parameter_file, parameters, conv_width, conv_height, conv_channels, kernel_nums);
     // 保存conv的参数到磁盘
-    if(SAVE_FILE) {
+    if (SAVE_FILE) {
         save_4Dmatrix_to_disk(conv_name, parameters);
     }
 
@@ -111,11 +108,13 @@ float*** conv3D(float*** input_tensor, char* parameter_file, int conv_width, int
                 for(int conv_channel_idx=0; conv_channel_idx < channels; conv_channel_idx++){
                     for(int conv_height_idx=0; conv_height_idx < conv_height; conv_height_idx++){
                         for(int conv_width_idx=0; conv_width_idx < conv_width; conv_width_idx++){
+
                             int i = output_height_idx + conv_height_idx;  // 输入向量当前的参与计算的点的坐标 = 输出向量的坐标conv_height_idx + 卷积当前的偏移
                             int j = output_width_idx + conv_width_idx;    // 最右边坐标为223 + 2 = 225
                             conv_operation_ans +=
                                     matrix_after_padding[conv_channel_idx][i][j]
                                     * parameters[kernel_idx][conv_channel_idx][conv_height_idx][conv_width_idx];
+
                         }
                     }
                 }
@@ -125,9 +124,10 @@ float*** conv3D(float*** input_tensor, char* parameter_file, int conv_width, int
     }
     free_3D_array(matrix_after_padding); // 释放input空间
     free_4D_array(parameters);           // 释放参数占用的内存空间
-    if(SAVE_FILE) {
+    if (SAVE_FILE) {
         save_3Dmatrix_to_disk(output_name, out_put_matrix); // 保存卷积层计算结果
     }
+    printf("convolution computing completed! \n");
     return out_put_matrix;
 }
 float*** relu3D(float*** input_tensor, char* output_name){
@@ -138,28 +138,31 @@ float*** relu3D(float*** input_tensor, char* output_name){
     for (int i = 0; i < channels; i++) {
         for (int j = 0; j < height; j++) {
             for(int k = 0; k < width; k++){
-                if(input_tensor[i][j][k] < 0){
+                if (input_tensor[i][j][k] < 0){
                     input_tensor[i][j][k] = 0;
                 }
             }
         }
     }
-    if(SAVE_FILE) {
+    if (SAVE_FILE) {
         save_3Dmatrix_to_disk(output_name, input_tensor);
     }
+    printf("RELU computing completed! \n");
     return input_tensor;
 }
+
 float* relu(float* input_tensor, char* output_name){
     int width =  _msize(input_tensor) / sizeof(float);
 
     for(int k = 0; k < width; k++){
-        if(input_tensor[k] < 0){
+        if (input_tensor[k] < 0){
             input_tensor[k] = 0;
         }
     }
-    if(SAVE_FILE) {
+    if (SAVE_FILE) {
         save_vector_to_disk(output_name, input_tensor);
     }
+    printf("RELU computing completed! \n");
     return input_tensor;
 }
 
@@ -198,13 +201,17 @@ float*** maxpooling(float*** input_tensor, int kernel_size, int stride, int padd
 
     free_3D_array(input_tensor);
     // 保存输出tensor
-    if(SAVE_FILE){
+    if (SAVE_FILE){
         save_3Dmatrix_to_disk(output_name, output_matrix);
     }
+    printf("maxpooling completed! \n\n");
     return output_matrix;
 }
 
 float* linear(float* input_tensor, char* file_weight, char* file_bias, int width, int height, char* fc_name, char* output_name){
+
+    printf("fully connected layer computing begin! \n");
+
     // 创建2D matrix， 读fc层的参数到weight矩阵中
     float** weight = malloc_2D_array(width, height);
     // 读参数到parameters中（2D matrix）
@@ -228,8 +235,7 @@ float* linear(float* input_tensor, char* file_weight, char* file_bias, int width
 
 
     // 保存fc的参数到磁盘
-//    save_2Dmatrix_to_disk(fc_name, weight);
-    if(SAVE_FILE) {
+    if (SAVE_FILE) {
         save_vector_to_disk(output_name, output_vector);
     }
 
@@ -237,6 +243,7 @@ float* linear(float* input_tensor, char* file_weight, char* file_bias, int width
     input_tensor = NULL;
     free_2D_array(weight);
     free(bias);
+    printf("fully connected computing completed! \n");
     return output_vector;
 }
 float* dropout(float* input_tensor, float p, char* output_name){
@@ -245,12 +252,13 @@ float* dropout(float* input_tensor, float p, char* output_name){
     for(int i = 0; i < width; i++){
         input_tensor[i] *= p;
     }
-    if(SAVE_FILE) {
+    if (SAVE_FILE) {
         save_vector_to_disk(output_name, input_tensor);
     }
+    printf("dropout completed! \n\n");
     return input_tensor;
 }
-float averagepool(float* input_tensor){
+float averagepool(float* input_tensor){ // 一维tensor的平均值
     int width =  _msize(input_tensor) / sizeof(float);
     float ans = 0;
     for(int i = 0; i < width; i++){
@@ -274,7 +282,7 @@ void softmax(float* input_tensor){
     return ;
 }
 
-float cal(float* input_tensor){
+int weighted_average(float* input_tensor){
     int width =  _msize(input_tensor) / sizeof(float);
     float ans = 0;
     for(int i = 0; i < width; i++){
@@ -283,5 +291,86 @@ float cal(float* input_tensor){
 
     free(input_tensor);
     input_tensor = NULL;
+    return (int)(ans);
+}
+
+
+int forward(char* filename){
+    int channels, height, width; // 接收stb库打开图片读出来的高,宽,长
+
+    unsigned char* input_pic = stbi_load(filename, &width, &height, &channels, 0); // 按照rgb顺序打开, 申请空间, opencv是用brg打开，要换一下
+    float*** input_matrix = convert_vector_2_3Dmatrix(input_pic, width, height, channels); // stblib里面打开jpg用的一维数组，这里将其转换为3D，并将pixel从unsigned char 变为float
+
+    // layer1
+    float*** conv1_before_relu3D = conv3D(input_matrix, "../parameters/_features.0.weight", // 从parameter_file读出参数
+                                          3, 3, 3,  64, 1, 1,                           // conv == 3*3*3*64, stride = 1, padding =1
+                                          "../conv1_input.txt", "../conv1.txt", "../conv1_before_relu3D.txt"); // // 保存输入tensor到conv1_input.txt， 卷积参数到conv1.txt， 输出结果到conv1_before_relu3D.txt
+    float*** conv1_relu3D = relu3D(conv1_before_relu3D, "../conv1_relu3D.txt");        // 输出结果到conv1_relu3D.txt
+    float*** conv1_max_pooing = maxpooling(conv1_relu3D,2,2,0,"../conv1_max_pooing.txt"); // 输出结果到conv1_max_pooing.txt
+
+    // layer2
+    float*** conv2_before_relu3D = conv3D(conv1_max_pooing,"../parameters/_features.3.weight",
+                                          3, 3, 64,  128, 1, 1,
+                                          "../conv2_input.txt", "../conv2.txt", "../conv2_before_relu3D.txt");
+    float*** conv2_relu3D = relu3D(conv2_before_relu3D, "../conv2_relu3D.txt");
+    float*** conv2_max_pooing = maxpooling(conv2_relu3D,2,2,0,"../conv2_max_pooing.txt");
+
+    // layer3
+    float*** conv3_before_relu3D = conv3D(conv2_max_pooing,"../parameters/_features.6.weight",
+                                          3, 3, 128, 256, 1, 1,
+                                          "../conv3_input.txt", "../conv3.txt", "../conv3_before_relu3D.txt");
+    float*** conv3_relu3D = relu3D(conv3_before_relu3D, "../conv3_relu3D.txt");
+
+    // layer4
+    float*** conv4_before_relu3D = conv3D(conv3_relu3D,"../parameters/_features.8.weight",
+                                          3, 3, 256,  256, 1, 1,
+                                          "../conv4_input.txt", "../conv4.txt", "../conv4_before_relu3D.txt");
+    float*** conv4_relu3D = relu3D(conv4_before_relu3D, "../conv4_relu3D.txt");
+    float*** conv4_max_pooing = maxpooling(conv4_relu3D,2,2,0,"../conv4_max_pooing.txt");
+
+    // layer5
+    float*** conv5_before_relu3D = conv3D(conv4_max_pooing,"../parameters/_features.11.weight", 
+                                          3, 3, 256,  512, 1, 1,
+                                          "../conv5_input.txt", "../conv5.txt", "../conv5_before_relu3D.txt");
+    float*** conv5_relu3D = relu3D(conv5_before_relu3D, "../conv5_relu3D.txt");
+
+    // layer6
+    float*** conv6_before_relu3D = conv3D(conv5_relu3D,"../parameters/_features.13.weight", 
+                                          3, 3, 512,  512, 1, 1,
+                                          "../conv6_input.txt", "../conv6.txt", "../conv6_before_relu3D.txt");
+    float*** conv6_relu3D = relu3D(conv6_before_relu3D, "../conv6_relu3D.txt");
+    float*** conv6_max_pooing = maxpooling(conv6_relu3D, 2, 2, 0, "../conv4_max_pooing.txt");
+
+    // layer7
+    float*** conv7_before_relu3D = conv3D(conv6_max_pooing,"../parameters/_features.16.weight", 
+                                          3, 3, 512,  512, 1, 1,
+                                          "../conv7_input.txt", "../conv7.txt", "../conv7_before_relu3D.txt");
+    float*** conv7_relu3D = relu3D(conv7_before_relu3D, "../conv7_relu3D.txt");
+
+    // layer8
+    float*** conv8_before_relu3D = conv3D(conv7_relu3D,"../parameters/_features.18.weight",
+                                          3, 3, 512,  512, 1, 1,
+                                          "../conv8_input.txt", "../conv8.txt", "../conv8_before_relu3D.txt");
+    float*** conv8_relu3D = relu3D(conv8_before_relu3D, "../conv8_relu3D.txt");
+    float*** conv8_max_pooing = maxpooling(conv8_relu3D, 2, 2, 0, "../conv8_max_pooing.txt");
+
+    // fc0
+    float* fc0_input = convert_3Dmatrix_2_vector(conv8_max_pooing);  // 将featuremap转成一维tensor，方便全连接层计算
+
+    float* fc0 = linear(fc0_input, "../parameters/linear0.weight", "../parameters/linear0.bias", // 从txt中读出w和b
+                         4096, 25088, "../fc0.txt", "../fc0_before_relu.txt"); //全连接层的shape是4096 * 25088，参数保存到fc0.txt，保存全连接层的计算结果到fc0_before_relu.txt
+    float* fc0_relu = relu(fc0, "../fc0_relu.txt");
+    float* fc0_dropout = dropout(fc0_relu, 0.5, "../fc0_dropout.txt");
+
+
+    float* fc1 = linear(fc0_dropout, "../parameters/linear1.weight", "../parameters/linear1.bias", 4096, 4096, "../fc1.txt", "../fc1_before_relu.txt");
+    float* fc1_relu = relu(fc1, "../fc1_relu.txt");
+    float* fc1_dropout = dropout(fc1_relu, 0.5, "../fc1_dropout.txt");
+
+
+    float* fc2 = linear(fc1_dropout, "../parameters/last_linear.weight", "../parameters/last_linear.bias", 101, 4096, "../fc2.txt", "../fc2_before_relu.txt");
+
+    softmax(fc2);
+    int ans = weighted_average(fc2);
     return ans;
 }
