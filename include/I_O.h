@@ -5,7 +5,7 @@
 #ifndef DNN_I_O_H
 #define DNN_I_O_H
 
-// 控制内存的申请和释放
+// 控制内存的申请， 和释放
 
 int load_conv_Parameters(char* path, float**** parameters, int width, int height, int channels, int filter_nums); // 加载模型参数到卷积层
 int load_weight_Parameters(char* path, float** parameters, int width, int height);
