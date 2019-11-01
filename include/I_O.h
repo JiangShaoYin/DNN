@@ -22,7 +22,4 @@ float* load_calculate_result_2_memeory(char* path, int variables_nums); // å°†ä¸
 void print_3D_array(float*** p);
 void print_4D_array(float**** p);
 
-
-
-
 #endif //DNN_I_O_H
