@@ -291,7 +291,7 @@ int weighted_average(float* input_tensor){
 
     free(input_tensor);
     input_tensor = NULL;
-    return (int)(ans);
+    return (int)ans;
 }
 
 

@@ -16,12 +16,7 @@
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/DNN.dir/C.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/DNN.dir/C.includecache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/DNN.dir/main.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/DNN.dir/main.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/DNN.dir/objects.a" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/DNN.dir/objects.a" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/DNN.dir/src/I_O.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/DNN.dir/src/I_O.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/DNN.dir/src/dnn.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/DNN.dir/src/dnn.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/DNN.exe" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/DNN.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/I_O.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/I_O.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/para_test.dat" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -87,7 +82,7 @@
       <workItem from="1572427339478" duration="9135000" />
       <workItem from="1572437712063" duration="50487000" />
       <workItem from="1572528661009" duration="15887000" />
-      <workItem from="1572592075639" duration="1613000" />
+      <workItem from="1572592075639" duration="2476000" />
     </task>
     <servers />
   </component>
@@ -124,6 +119,11 @@
           <url>file://$PROJECT_DIR$/src/I_O.c</url>
           <line>139</line>
           <option name="timeStamp" value="87" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/src/dnn.c</url>
+          <line>374</line>
+          <option name="timeStamp" value="89" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
