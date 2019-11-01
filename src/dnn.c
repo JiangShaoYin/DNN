@@ -43,9 +43,9 @@ float*** convert_vector_2_3Dmatrix(unsigned char* input_pic, int width, int heig
             float R = (float) (input_pic[channels * width * row + col * channels + 0]);
             float G = (float) (input_pic[channels * width * row + col * channels + 1]);
             float B = (float) (input_pic[channels * width * row + col * channels + 2]);
-            three_D_array[0][row][col] = R;
+            three_D_array[0][row][col] = B;  // 恢复成opencv里面brg的打开方式
             three_D_array[1][row][col] = G;
-            three_D_array[2][row][col] = B;
+            three_D_array[2][row][col] = R;
         }
     }
 

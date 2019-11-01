@@ -16,13 +16,9 @@
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/DNN.dir/C.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/DNN.dir/C.includecache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/DNN.dir/main.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/DNN.dir/main.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/DNN.dir/objects.a" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/DNN.dir/objects.a" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/DNN.dir/src/I_O.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/DNN.dir/src/I_O.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/DNN.dir/src/dnn.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/DNN.dir/src/dnn.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/DNN.exe" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/DNN.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/I_O.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/I_O.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/dnn.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/dnn.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/I_O.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/I_O.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/dnn.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/dnn.c" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -87,7 +83,7 @@
       <workItem from="1572402641402" duration="17708000" />
       <workItem from="1572427339478" duration="9135000" />
       <workItem from="1572437712063" duration="50487000" />
-      <workItem from="1572528661009" duration="7555000" />
+      <workItem from="1572528661009" duration="11609000" />
     </task>
     <servers />
   </component>
@@ -135,12 +131,20 @@
           <line>97</line>
           <option name="timeStamp" value="85" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/src/I_O.c</url>
+          <line>137</line>
+          <option name="timeStamp" value="87" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <watches-manager>
       <configuration name="CMakeRunConfiguration">
         <watch expression="atof(parameter)" />
         <watch expression="parameter" />
+        <watch expression="(float)(p[l])" />
+        <watch expression="p[l]" />
+        <watch expression="p[1]" language="ObjectiveC" />
       </configuration>
     </watches-manager>
   </component>
