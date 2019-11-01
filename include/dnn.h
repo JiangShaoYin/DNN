@@ -30,7 +30,6 @@ float averagepool(float* input_tensor); // 对一维的vector求平均值
 void softmax(float* input_tensor);
 int weighted_average(float* input_tensor); // 计算年龄的加权平均值
 
-
 int forward(char* filename); // filename指向一张 224 * 224的图片
 
 #endif //DNN_H
