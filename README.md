@@ -81,4 +81,10 @@ bool SAVE_FILE = FALSE;  // 设置全局变量，控制是否保存网络参数�
 
 ![](pics/QQ截图20191101155354.png)
 
+模型参数地址：
+链接：https://pan.baidu.com/s/1AKx5M0kVDQWgBjE9VUmvlQ 
+提取码：ywsy 
+将parameters.rar在根目录下解压即可，如下图所示：
+![](pics/QQ截图20191105221142.png)
+
 the end~

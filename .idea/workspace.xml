@@ -12,7 +12,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="94d0c91f-d6ea-4ee2-959e-b5ad8f79132e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/include/I_O.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/I_O.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/DNN.exe" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/DNN.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/dnn.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/dnn.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dnn.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/dnn.c" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -35,7 +38,7 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/CMakeLists.txt" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="restartRequiresConfirmation" value="false" />
   </component>
   <component name="RecentsManager">
@@ -78,7 +81,12 @@
       <workItem from="1572427339478" duration="9135000" />
       <workItem from="1572437712063" duration="50487000" />
       <workItem from="1572528661009" duration="15887000" />
-      <workItem from="1572592075639" duration="3430000" />
+      <workItem from="1572592075639" duration="3537000" />
+      <workItem from="1572598874181" duration="31000" />
+      <workItem from="1572962768835" duration="729000" />
+      <workItem from="1572963750011" duration="10000" />
+      <workItem from="1573030269143" duration="3988000" />
+      <workItem from="1573461493605" duration="2435000" />
     </task>
     <servers />
   </component>
@@ -107,31 +115,24 @@
           <option name="timeStamp" value="28" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/main.c</url>
-          <line>12</line>
-          <option name="timeStamp" value="82" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/src/I_O.c</url>
           <line>139</line>
           <option name="timeStamp" value="87" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/src/dnn.c</url>
-          <line>374</line>
+          <line>380</line>
           <option name="timeStamp" value="89" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <watches-manager>
       <configuration name="CMakeRunConfiguration">
-        <watch expression="atof(parameter)" />
-        <watch expression="parameter" />
-        <watch expression="(float)(p[l])" />
-        <watch expression="p[l]" />
-        <watch expression="p[1]" language="ObjectiveC" />
-        <watch expression="ans" />
-        <watch expression="(int)(ans)" />
+        <watch expression="output_height" />
+        <watch expression="height" />
+        <watch expression="width" />
+        <watch expression="input[channel][height][width]" />
+        <watch expression="out_put_matrix" />
       </configuration>
     </watches-manager>
   </component>

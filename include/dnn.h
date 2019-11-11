@@ -16,6 +16,8 @@ float* convert_3Dmatrix_2_vector(float*** input_tensor); // 将featuremap转成�
 float*** conv3D(float*** input_tensor, char* parameter_file, int conv_width, int conv_height, // conv_width * conv_height * conv_channels的卷积操作
                int conv_channels,  int kernel_nums, int stride, int padding,
                char* input_name, char* conv_name, char* output_name);// 保存输入tensor到input_name所指向的文件， 卷积参数到conv_name所指向的文件， 输出结果到output_name所指向的文件
+float ceil_conv(int conv_widths, int conv_heights, int channels, int kernel,  // 卷积核参数
+                int output_width, int output_height, int stride, float*** input, float**** parameters);
 float*** relu3D(float*** input_tensor, char* output_name);// 在matrix上的relu， 输出结果到output_name所指向的文件
 float*** maxpooling(float*** input_tensor, int kernel_size, int stride, int padding, char* output_name);
 
